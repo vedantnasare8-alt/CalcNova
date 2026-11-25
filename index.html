@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CalcNova | Smart Calculator</title>
+
+    <!-- Connect CSS file -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="calculator">
+
+        <!-- Calculator Header -->
+        <header class="calculator-header">
+            <div>
+                <h1>CalcNova</h1>
+                <p>Your everyday calculator</p>
+            </div>
+  
+            <button 
+                class="calculator-icon history-toggle"
+                data-action="toggle-history"
+                aria-label="Toggle calculation history"
+                title="Calculation history"
+            >
+                ↺
+            </button>
+
+
+            <button
+                class="calculator-icon theme-toggle"
+                data-action="toggle-theme"
+                aria-label="Switch theme"
+                title="Switch theme"
+            >
+                ☼
+            </button>
+
+
+        </header>
+
+        <!-- Calculator Display -->
+        <section class="display">
+
+            <div class="previous-operation" id="previousOperation">
+                Ready to calculate
+            </div>
+
+            <div class="current-value" id="currentValue">
+                0
+            </div>
+
+        </section>
+
+
+
+
+
+        <!-- Calculator Buttons -->
+        <section class="buttons">
+
+            <!-- First Row -->
+            <button class="btn function" data-action="clear">AC</button>
+            <button class="btn function" data-action="delete">DEL</button>
+            <button class="btn function" data-action="sign">+/-</button>
+            <button class="btn operator" data-value="/">÷</button>
+
+            <!-- Second Row -->
+            <button class="btn number" data-value="7">7</button>
+            <button class="btn number" data-value="8">8</button>
+            <button class="btn number" data-value="9">9</button>
+            <button class="btn operator" data-value="*">×</button>
+
+            <!-- Third Row -->
+            <button class="btn number" data-value="4">4</button>
+            <button class="btn number" data-value="5">5</button>
+            <button class="btn number" data-value="6">6</button>
+            <button class="btn operator" data-value="-">−</button>
+
+            <!-- Fourth Row -->
+            <button class="btn number" data-value="1">1</button>
+            <button class="btn number" data-value="2">2</button>
+            <button class="btn number" data-value="3">3</button>
+            <button class="btn operator" data-value="+">+</button>
+
+            <!-- Fifth Row -->
+            <button class="btn number zero" data-value="0">0</button>
+            <button class="btn number" data-value=".">.</button>
+            <button class="btn equals" data-action="calculate">=</button>
+
+        </section>
+
+<!-- Calculation History -->
+<section class="history-panel" id="historyPanel" hidden>
+
+    <div class="history-header">
+        <h2>History</h2>
+
+        <button class="clear-history"
+                data-action="clear-history">
+            Clear
+        </button>
+    </div>
+
+    <div class="history-list" id="historyList">
+        <p class="empty-history">
+            No calculations yet
+        </p>
+    </div>
+
+</section>
+
+        <!-- Footer -->
+       
+<footer class="calculator-footer">
+    <p>Made with HTML, CSS & JavaScript</p>
+
+    <p class="keyboard-hint">
+        Keyboard: 0–9 · + − × ÷ · Enter · Backspace
+    </p>
+</footer>
+
+
+    </main>
+
+    <!-- Connect JavaScript file -->
+    <script src="script.js"></script>
+
+</body>
+</html>

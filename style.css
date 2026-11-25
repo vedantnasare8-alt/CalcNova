@@ -1,0 +1,612 @@
+
+/* ==============================
+   1. BASIC PAGE SETTINGS
+================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: #ffffff;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            #26345d,
+            transparent 45%
+        ),
+        linear-gradient(
+            135deg,
+            #080b18,
+            #11162b,
+            #090c18
+        );
+
+    padding: 20px;
+}
+
+
+/* ==============================
+   2. CALCULATOR MAIN CONTAINER
+================================ */
+
+.calculator {
+    width: 100%;
+    max-width: 370px;
+
+    padding: 25px;
+
+    background: rgba(20, 26, 48, 0.85);
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    border-radius: 28px;
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.45),
+        0 0 35px rgba(105, 91, 255, 0.08);
+
+    backdrop-filter: blur(20px);
+}
+
+
+/* ==============================
+   3. CALCULATOR HEADER
+================================ */
+
+.calculator-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 30px;
+}
+
+.calculator-header h1 {
+    font-size: 25px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+.calculator-header p {
+    margin-top: 5px;
+
+    font-size: 12px;
+    color: #929bb8;
+}
+
+.calculator-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 22px;
+    color: #a89aff;
+
+    background: rgba(133, 112, 255, 0.15);
+
+    border: 1px solid rgba(133, 112, 255, 0.3);
+
+    border-radius: 14px;
+}
+
+
+/* ==============================
+   4. CALCULATOR DISPLAY
+================================ */
+
+.display {
+    min-height: 125px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+
+    padding: 20px 5px;
+
+    margin-bottom: 20px;
+
+    overflow: hidden;
+}
+
+.previous-operation {
+    min-height: 24px;
+
+    font-size: 14px;
+    color: #8993b3;
+
+    margin-bottom: 10px;
+}
+
+.current-value {
+    max-width: 100%;
+
+    font-size: 46px;
+    font-weight: 600;
+
+    color: #ffffff;
+
+    overflow-wrap: anywhere;
+}
+
+
+/* ==============================
+   5. BUTTON GRID
+================================ */
+
+.buttons {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 12px;
+}
+
+
+/* ==============================
+   6. COMMON BUTTON DESIGN
+================================ */
+
+.btn {
+    height: 62px;
+
+    border: none;
+    border-radius: 18px;
+
+    font-size: 20px;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.15s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+/* Button click effect */
+
+.btn:hover {
+    transform: translateY(-3px);
+}
+
+.btn:active {
+    transform: scale(0.94);
+}
+
+
+/* ==============================
+   7. NUMBER BUTTONS
+================================ */
+
+.number {
+    color: #e5e9ff;
+
+    background: #252c46;
+
+    border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.number:hover {
+    background: #323b5c;
+}
+
+
+/* ==============================
+   8. FUNCTION BUTTONS
+================================ */
+
+.function {
+    color: #a9b4d8;
+
+    background: #303753;
+
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.function:hover {
+    background: #3b4568;
+}
+
+
+/* ==============================
+   9. OPERATOR BUTTONS
+================================ */
+
+.operator {
+    color: #c5b9ff;
+
+    background: rgba(124, 103, 255, 0.18);
+
+    border: 1px solid rgba(124, 103, 255, 0.15);
+}
+
+.operator:hover {
+    background: rgba(124, 103, 255, 0.32);
+
+    box-shadow:
+        0 0 20px rgba(124, 103, 255, 0.15);
+}
+
+
+/* ==============================
+   10. EQUALS BUTTON
+================================ */
+
+.equals {
+    color: #ffffff;
+
+    background: linear-gradient(
+        135deg,
+        #7968ff,
+        #5b8cff
+    );
+
+    box-shadow:
+        0 8px 20px rgba(91, 140, 255, 0.2);
+}
+
+.equals:hover {
+    box-shadow:
+        0 8px 28px rgba(91, 140, 255, 0.4);
+}
+
+
+/* ==============================
+   11. ZERO BUTTON
+================================ */
+
+.zero {
+    grid-column: span 2;
+}
+
+
+/* ==============================
+   12. FOOTER
+================================ */
+
+.calculator-footer {
+    margin-top: 25px;
+
+    text-align: center;
+
+    font-size: 11px;
+    color: #697493;
+
+    letter-spacing: 0.5px;
+}
+
+
+/* ==============================
+   13. MOBILE RESPONSIVENESS
+================================ */
+
+@media (max-width: 400px) {
+
+    .calculator {
+        padding: 20px;
+    }
+
+    .btn {
+        height: 55px;
+        border-radius: 15px;
+    }
+
+    .current-value {
+        font-size: 38px;
+    }
+
+    .buttons {
+        gap: 9px;
+    }
+}
+
+
+/* Keyboard shortcut hint */
+
+.keyboard-hint {
+    margin-top: 8px;
+
+    font-size: 10px;
+    color: #7e89a8;
+
+    line-height: 1.6;
+}
+
+
+
+/* ==============================
+   CALCULATION HISTORY
+================================ */
+
+.history-panel {
+    margin-top: 20px;
+    padding: 15px;
+
+    background: rgba(10, 14, 30, 0.65);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 18px;
+}
+
+.history-panel[hidden] {
+    display: none;
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 12px;
+}
+
+.history-header h2 {
+    font-size: 15px;
+    color: #dce2ff;
+}
+
+.clear-history {
+    border: none;
+    background: transparent;
+
+    color: #a89aff;
+    font-size: 12px;
+
+    cursor: pointer;
+}
+
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    max-height: 180px;
+    overflow-y: auto;
+}
+
+.history-item {
+    padding: 10px;
+
+    background: rgba(255, 255, 255, 0.04);
+
+    border-radius: 10px;
+}
+
+.history-expression {
+    font-size: 12px;
+    color: #8993b3;
+}
+
+.history-result {
+    margin-top: 4px;
+
+    font-size: 18px;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.empty-history {
+    font-size: 12px;
+    color: #8993b3;
+    text-align: center;
+
+    padding: 12px 0;
+}
+
+
+
+
+/* Light Theme */
+body.light-theme {
+  background: linear-gradient(135deg, #f5f3ff, #e0e7ff);
+  color: #1e1b4b;
+}
+
+body.light-theme .calculator {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #ddd6fe;
+  box-shadow: 0 20px 50px rgba(79, 70, 229, 0.15);
+}
+
+body.light-theme .display {
+  background: #f5f3ff;
+  color: #1e1b4b;
+}
+
+body.light-theme #currentValue {
+  color: #1e1b4b;
+}
+
+body.light-theme #previousOperation {
+  color: #7c73a8;
+}
+
+body.light-theme .btn {
+  background: #ffffff;
+  color: #312e81;
+  border: 1px solid #e5e7eb;
+}
+
+body.light-theme .btn:hover {
+  background: #ede9fe;
+}
+
+body.light-theme .history-panel {
+  background: #ffffff;
+  color: #312e81;
+}
+
+body.light-theme .history-item {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+
+
+
+/* =================================
+   STAGE 11: UI/UX IMPROVEMENTS
+================================= */
+
+/* Smooth theme transitions */
+body,
+.calculator,
+.display,
+.btn,
+.history-panel {
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* Calculator entrance animation */
+.calculator {
+  animation: calculatorAppear 0.6s ease-out;
+}
+
+@keyframes calculatorAppear {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Button hover effect */
+.btn {
+  transition:
+    transform 0.15s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.btn:active {
+  transform: scale(0.94);
+}
+
+/* Display typography */
+#currentValue {
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+
+/* History animation */
+.history-item {
+  animation: historyAppear 0.25s ease-out;
+}
+
+@keyframes historyAppear {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Theme button hover */
+.theme-toggle,
+.history-toggle {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.theme-toggle:hover,
+.history-toggle:hover {
+  transform: rotate(15deg) scale(1.1);
+}
+
+
+
+
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+  .calculator {
+    width: min(92%, 380px);
+    padding: 20px;
+    border-radius: 22px;
+  }
+
+  .btn {
+    min-width: 0;
+    font-size: 18px;
+  }
+
+  #currentValue {
+    font-size: clamp(25px, 8vw, 36px);
+  }
+
+  .history-panel {
+    max-height: 220px;
+    overflow-y: auto;
+  }
+}
+
+/* Small screens */
+@media (max-width: 350px) {
+  .calculator {
+    padding: 14px;
+  }
+
+  .buttons {
+    gap: 8px;
+  }
+
+  .btn {
+    font-size: 16px;
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+
+
+/* Keyboard accessibility */
+.btn:focus-visible,
+.calculator-icon:focus-visible,
+.clear-history:focus-visible {
+  outline: 3px solid #a78bfa;
+  outline-offset: 3px;
+}
